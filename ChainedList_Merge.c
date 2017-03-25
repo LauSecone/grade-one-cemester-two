@@ -1,38 +1,41 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 struct node {
     int num;
     struct node *next;
 };
 
-void creat(struct node *);
+struct node *creat(struct node *);
 struct node *insert(struct node *, int);
 void output(struct node *);
 
 int main() {
     struct node *head1 = NULL, *head2 = NULL;
-    creat(head1);
-    creat(head2);
+    head1 = creat(head1);
+    output(head1);
+    head2 = creat(head2);
+    output(head2);
     struct node *cur_node;
     cur_node = head2;
-    while (cur_node -> next != NULL) {
+    while (cur_node != NULL) {
         insert(head1, cur_node -> num);
-        cur_node = cur_node -> next;
-    }
+    	cur_node = cur_node -> next;
+	}	
     output(head1);
     free(head1);
     free(head2);
     return 0;
 }
 
-void creat(struct node *head) {
+struct node *creat(struct node *head) {
     int num = 0;
     scanf("%d", &num);
     while(num != -1) {
-        insert(head, num);
+        head = insert(head, num);
         scanf("%d", &num);
     }
-    return;
+    return head;
 }
 
 struct node *insert(struct node *head, int num) {
@@ -49,14 +52,14 @@ struct node *insert(struct node *head, int num) {
             head = new_node;
             return head;
         }
-        if (head -> next = NULL) {
+        if (head -> next == NULL) {
             head -> next = new_node;
             return head;
         }
         struct node *small, *big;
         small = head;
         big = head -> next;
-        while ((big -> num < new_node -> num)||(big -> next == NULL)) {
+        while ((big -> num < new_node -> num) && (big -> next != NULL)) {
             small = big;
             big = big -> next;
         }
@@ -70,6 +73,7 @@ struct node *insert(struct node *head, int num) {
         }
         return head;
     }
+    return head;
 }
 
 void output(struct node *head) {
@@ -77,5 +81,6 @@ void output(struct node *head) {
         printf("%d ", head -> num);
         head = head -> next;
     }
+    printf("\n");
     return;
 }
