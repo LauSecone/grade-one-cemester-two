@@ -14,17 +14,16 @@ struct node *FindMaxNum(struct node *);
 int main() {
     struct node *head = (struct node *)malloc(sizeof(struct node));
     if (head != NULL) {
-		int num;
-		scanf("%d", &num);
-    	head -> next = NULL;
-    	head -> num = num;
+	    int num;
+	    scanf("%d", &num);
+	    head -> next = NULL;
+	    head -> num = num;
     }
     Creat_ChainList(head);
     head = Sort_ChainList(head);
     Output_ChainList(head);
     free(head);
-    return 0;
-}
+    return 0;}
 
 void Creat_ChainList(struct node *head) {
     struct node *Cur_ptr;
@@ -34,12 +33,12 @@ void Creat_ChainList(struct node *head) {
     while (num != -1) {
         struct node *new_ptr = (struct node *)malloc(sizeof(struct node));
         if (new_ptr != NULL) {
-			new_ptr -> next = NULL;
+		new_ptr -> next = NULL;
         	new_ptr -> num = num;
-			Cur_ptr -> next = new_ptr;
+		Cur_ptr -> next = new_ptr;
 	    	Cur_ptr = new_ptr;
-			scanf("%d", &num);
-		}
+		scanf("%d", &num);
+	}
     }
     return;
 }
@@ -55,10 +54,10 @@ struct node *Sort_ChainList(struct node *head) {
     	while (LastSorted_ptr -> next -> next -> next != NULL) {
         	PreMaxNum_ptr = FindMaxNum(LastSorted_ptr -> next);
         	if (PreMaxNum_ptr != NULL) {
-        		MaxNum_ptr = PreMaxNum_ptr -> next;
-            	PreMaxNum_ptr -> next = MaxNum_ptr -> next;
-            	MaxNum_ptr -> next = LastSorted_ptr -> next;
-            	LastSorted_ptr -> next = MaxNum_ptr;
+			MaxNum_ptr = PreMaxNum_ptr -> next;
+			PreMaxNum_ptr -> next = MaxNum_ptr -> next;
+			MaxNum_ptr -> next = LastSorted_ptr -> next;
+			LastSorted_ptr -> next = MaxNum_ptr;
         	}
         	LastSorted_ptr = LastSorted_ptr -> next;
     	}
