@@ -22,7 +22,7 @@ int delete_the_note() {
 			if (ch1 == '"' && t1n == 0 && t2n == 0) {
 				quo ^= 1;
 			}
-			if (ch1 == '/' && ch2 == '/' && quo == 0) {
+			if (ch1 == '/' && ch2 == '/' && quo == 0 && t2n == 0) {
 				t1n = 1;
 			}
 			if (ch1 == '*' && ch2 == '/' && quo == 0 && t1n == 0) {
@@ -33,7 +33,8 @@ int delete_the_note() {
 				ch2 = '\0';
 				ch1 = '\0';
 			}
-			if (ch1 == '\n') {
+			if (ch1 == '\n' && t1n == 1) {
+				ch1 = '\0';
 				t1n = 0;
 			}
 			if (!t1n && !t2n && ch2 != '\0') {

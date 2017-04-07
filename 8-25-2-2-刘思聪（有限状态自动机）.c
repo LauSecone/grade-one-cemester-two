@@ -43,12 +43,12 @@ int delete_the_note() {
 					if (ch1 == '\n') {
 						sta = 0;
 					}
+					ch1 = '\0';
 					ch2 = ch1;
 					break;
 				case 2 :
 					if (ch2 == '*' && ch1 == '/') {
 						ch1 = '\0';
-						ch2 = '\0';
 						sta = 0;
 					}
 					ch2 = ch1;
