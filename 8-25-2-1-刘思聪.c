@@ -70,7 +70,9 @@ int DealFile() {
 				fprintf(fp, "\n");
 			}
 		}
-		fclose(fp);
+		if (fclose(fp) != 0) {
+			fprintf(stderr, "Can not close the file");
+		}
 	}
 	return 0;
 }

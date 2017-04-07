@@ -42,8 +42,12 @@ int delete_the_note() {
 			ch2 = ch1;
 		}
 		fprintf(output, "%c", ch2);
-		fclose(input);
-		fclose(output);
+		if (fclose(input) != 0) {
+			fprintf(stderr, "Can not close the input file");
+		}
+		if (fclose(output) != 0) {
+			fprintf(stderr, "Can not close the output file");
+		}
 	}
 	return 0;
 }
