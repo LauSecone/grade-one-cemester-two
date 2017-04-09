@@ -53,6 +53,7 @@ void creatBlankRecord() {
 		for (i = 0; i < 100; ++i) {
 			fwrite(&blankCommodity, sizeof(struct commodityData), 1, fp);
 		}
+		fflush(fp);
 		if (fclose(fp)) {
 			fprintf(stderr, "Can not close the file: commodity,dat\n");
 			return;
@@ -86,6 +87,7 @@ void inputCommodityRecord() {
 			fprintf(stdout, "请输入商品信息[ID为-1代表输入结束]：\n商品 ID：");
 			fscanf(stdin, "%d", &(com.ID));
 		}
+		fflush(fp);
 		if (fclose(fp)) {
 			fprintf(stderr, "Can not close the file: commodity.dta\n");
 		}
@@ -141,6 +143,7 @@ void updateCommodityRecord() {
 			}
 			fscanf(stdin, "%d", &id);
 		}
+		fflush(fp);
 		if (close(fp)) {
 			fprintf(stderr, "Can not close the file: commodity.dat\n");
 		}
@@ -189,6 +192,7 @@ void deleteCommodityRecord() {
 			fprintf(stdout, "请输入待删除商品ID[记录号为-1代表结束删除]:\n");
 			fscanf(stdin, "%d", &id);
 		}
+		fflush(fp);
 		if (fclose(fp)) {
 			fprintf(stderr, "Can not close the file: commodity.dat\n");
 		}
