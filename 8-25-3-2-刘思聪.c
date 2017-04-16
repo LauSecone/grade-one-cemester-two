@@ -13,64 +13,66 @@ int main() {
 		if (ch == ' ') continue;
 		//printf("%d %d\n", sta, ch);
 		switch (sta) {
-			case 2:
-				if (isalpha(ch) || (ch == '_')) {
-					sta = 3;
-				}
-				else {
-					flag = 0;
-					sta = 6;
-				}
-				break;
-			case 3:
-				if (isalpha(ch) || isdigit(ch) || (ch == '_')) {
-					sta = 3;
-				}
-				else if (ch == '=') {
-					sta = 4;
-				}
-				else if (ch == ';') {
-					sta = 7;
-				}
-				else if (ch == ',') {
-					sta = 2;
-				}
-				else {
-					flag = 0;
-					sta = 6;
-				}
-				break;
-			case 4:
-				if (isdigit(ch)) {
-					sta = 5;
-				}
-				else {
-					flag = 0;
-					sta = 6;
-				}
-				break;
-			case 5:
-				if (isdigit(ch)) {
-					sta = 5;
-				} else if (ch == ';') {
-					sta = 7;
-				} else if (ch == ',') {
-					sta = 2;
-				}
-				else {
-					flag = 0;
-					sta = 6;
-				}
-				break;
-			case 6:
-				break;
-			case 7:
-				if (ch != ';' || ch != '\n') {
-					flag = 0;
-					sta = 6;
-				}
-				break;
-			default : printf("Unknow status");
+		case 2:
+			if (isalpha(ch) || (ch == '_')) {
+				sta = 3;
+			}
+			else {
+				flag = 0;
+				sta = 6;
+			}
+			break;
+		case 3:
+			if (isalpha(ch) || isdigit(ch) || (ch == '_')) {
+				sta = 3;
+			}
+			else if (ch == '=') {
+				sta = 4;
+			}
+			else if (ch == ';') {
+				sta = 7;
+			}
+			else if (ch == ',') {
+				sta = 2;
+			}
+			else {
+				flag = 0;
+				sta = 6;
+			}
+			break;
+		case 4:
+			if (isdigit(ch)) {
+				sta = 5;
+			}
+			else {
+				flag = 0;
+				sta = 6;
+			}
+			break;
+		case 5:
+			if (isdigit(ch)) {
+				sta = 5;
+			}
+			else if (ch == ';') {
+				sta = 7;
+			}
+			else if (ch == ',') {
+				sta = 2;
+			}
+			else {
+				flag = 0;
+				sta = 6;
+			}
+			break;
+		case 6:
+			break;
+		case 7:
+			if (ch != ';' || ch != '\n') {
+				flag = 0;
+				sta = 6;
+			}
+			break;
+		default: printf("Unknow status");
 		}
 	}
 	fclose(fp);
